@@ -63,6 +63,7 @@ class _PlantDiagnosisScreenState extends State<PlantDiagnosisScreen> {
           Content.multi([prompt, imagePart])
         ]);
 
+
         // Retrieve response text as it streams back
         await for (final chunk in response) {
           _responseText += chunk.text.toString();
@@ -70,7 +71,7 @@ class _PlantDiagnosisScreenState extends State<PlantDiagnosisScreen> {
       } catch (e) {
         print("VertexAIError: ${e.toString()}");
       }
-
+      diagnosisResult=_responseText;
       print("responseText: ${_responseText}");
       isLoading=false;
       setState(() {});
