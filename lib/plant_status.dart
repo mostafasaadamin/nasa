@@ -57,6 +57,8 @@ class _PlantDiagnosisScreenState extends State<PlantDiagnosisScreen> {
       final imageBytes = await _image?.readAsBytes();
       final imagePart = DataPart('image/jpeg', imageBytes!);  // Ensure proper MIME type for images
 
+
+
       try {
         // Send the image and prompt to the Vertex AI model
         final response = await model.generateContentStream([
