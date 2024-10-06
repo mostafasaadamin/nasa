@@ -95,51 +95,53 @@ class _PlantDiagnosisScreenState extends State<PlantDiagnosisScreen> {
       body: isLoading?Center(child: CircularProgressIndicator(),):
       Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Upload Plant Image',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Row(
-              children: [
-                ElevatedButton.icon(
-                  onPressed: _getImageFromGallery,
-                  icon: Icon(Icons.upload_file),
-                  label: Text('Upload'),
-                ),
-                SizedBox(width: 10),
-                ElevatedButton.icon(
-                  onPressed: _getImageFromCamera,
-                  icon: Icon(Icons.camera_alt),
-                  label: Text('Camera'),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            _image != null
-                ? Image.file(
-              _image!,
-              height: 200,
-            )
-                : Text('No image selected'),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _uploadImage,
-              child: Text('Diagnose'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Diagnosis Results',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            diagnosisResult.isNotEmpty
-                ? Text(diagnosisResult)
-                : Text('No diagnosis available.'),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Upload Plant Image',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: _getImageFromGallery,
+                    icon: Icon(Icons.upload_file),
+                    label: Text('Upload'),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton.icon(
+                    onPressed: _getImageFromCamera,
+                    icon: Icon(Icons.camera_alt),
+                    label: Text('Camera'),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              _image != null
+                  ? Image.file(
+                _image!,
+                height: 200,
+              )
+                  : Text('No image selected'),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _uploadImage,
+                child: Text('Diagnose'),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Diagnosis Results',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              diagnosisResult.isNotEmpty
+                  ? Text(diagnosisResult)
+                  : Text('No diagnosis available.'),
+            ],
+          ),
         ),
       ),
     );
